@@ -17,6 +17,22 @@ function setup() {
 
 function draw() {
     background(51);
+    drawLines();
     
     player.draw();
+}
+
+function drawLines() {
+    strokeWeight(1);
+    stroke(255);
+    
+    // Vertical lines
+    for(var i = 0; i < gridNr; i++){
+        line(i * gridSize, 0, i * gridSize, height);
+    }
+    
+    // Horizontal lines
+    for(var i = 0; i < gridNr; i++){
+        line(0, i * gridSize, width, i * gridSize);
+    }
 }
