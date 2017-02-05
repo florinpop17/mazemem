@@ -195,24 +195,27 @@ function keyPressed() {
         let test;
         let i = current.i;
         let j = current.j;
+        
+        // Testig if the cell exist and it doesn't have a wall on the direction you are trying to move
+        
         if(keyCode === LEFT_ARROW){
             test = grid[index(i-1, j)];
-            if(test && test.walls[1])
+            if(test && !test.walls[1])
                 next = test;
         }    
         if(keyCode === RIGHT_ARROW){
             test = grid[index(i+1, j)];
-            if(test && test.walls[3])
+            if(test && !test.walls[3])
                 next = test;
         }    
         if(keyCode === UP_ARROW){
             test = grid[index(i, j-1)];
-            if(test && test.walls[2])
+            if(test && !test.walls[2])
                 next = test;
         }    
         if(keyCode === DOWN_ARROW){
             test = grid[index(i, j+1)];
-            if(test && test.walls[0])
+            if(test && !test.walls[0])
                 next = test;
         }
         
