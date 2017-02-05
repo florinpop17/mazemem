@@ -1,0 +1,30 @@
+{
+  "name": "mazemem",
+  "version": "1.0.0",
+  "description": "p5js game",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/florinpop17/mazemem.git"
+  },
+  "keywords": [
+    "nodejs",
+    "p5js",
+    "game",
+    "memory",
+    "maze"
+  ],
+  "author": "Florin Pop",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/florinpop17/mazemem/issues"
+  },
+  "homepage": "https://github.com/florinpop17/mazemem#readme",
+  "dependencies": {
+    "express": "^4.14.1"
+  }
+}
