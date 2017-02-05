@@ -27,6 +27,7 @@ class Cell{
             noStroke();
             rect(this.x, this.y, this.w, this.w);
             
+            strokeWeight(2);
             stroke(255);
             if(this.walls[0]){
                 line(this.x, this.y, this.x + this.w, this.y);
