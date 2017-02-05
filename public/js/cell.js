@@ -10,7 +10,6 @@ class Cell{
         
         this.visited = false;
         
-        this.visible = false;
     }
     
     draw() {
