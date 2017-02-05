@@ -19,9 +19,9 @@ class Cell{
         if(this.visible){
             
             if(this.finalCell){
-                fill(255, 0, 255);
+                fill('#F4D00C');
             } else {
-                fill(0);
+                fill('#004C70');
             }
             
             noStroke();
@@ -55,7 +55,7 @@ class Cell{
     }
     
     highlight() {
-        fill(150, 0, 255);
+        fill('#E0A025');
         noStroke();
         rect(this.x + 3, this.y + 3, this.w - 6, this.w - 6);
     }
