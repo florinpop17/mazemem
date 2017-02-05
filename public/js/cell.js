@@ -9,6 +9,8 @@ class Cell{
         this.walls = [true, true, true, true];
         
         this.visited = false;
+        
+        this.visible = false;
     }
     
     draw() {

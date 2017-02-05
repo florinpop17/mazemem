@@ -1,5 +1,5 @@
 let canvasSize = 800;
-let gridNr = 20;
+let gridNr = 10;
 let gridSize = canvasSize / gridNr;
 let grid = [];
 
@@ -31,16 +31,19 @@ function setup() {
 function draw() {
     background(51);
     
-    grid.forEach(cell => {
-        cell.draw();
-    });
+//    grid.forEach(cell => {
+//        cell.draw();
+//    });
     
+    mazeGeneratorAlgorithm();
+}
+
+function mazeGeneratorAlgorithm() {
     current.visited = true;
     current.highlight();
     
     // STEP 1
     next = checkNeighbors(current.i, current.j);
-        
     if(next) {
         next.visited = true;
         
@@ -57,11 +60,11 @@ function draw() {
         
         current = cell;
     } else {
-        console.log('stack empty');
         noLoop();
         finished = performance.now();
         
         console.log((finished - start) / 1000, 'seconds');
+        console.log(grid);
     }
 }
 
