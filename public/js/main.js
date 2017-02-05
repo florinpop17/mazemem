@@ -37,7 +37,7 @@ function setup() {
         
     // Starting at grid[0]
     current = grid[0];
-    finish = grid(floor(random(0, grid.length)));
+    finish = grid[floor(random(0, grid.length))];
     finish.finalCell = true;
 }
 

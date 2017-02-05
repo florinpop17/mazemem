@@ -18,7 +18,12 @@ class Cell{
     draw() {
         if(this.visible){
             
-            fill(0);
+            if(finalTile){
+                fill(255, 0, 255);
+            } else {
+                fill(0);
+            }
+            
             noStroke();
             rect(this.x, this.y, this.w, this.w);
             
