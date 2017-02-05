@@ -40,7 +40,7 @@ function draw() {
     });
     
     if(gameStarted){
-        showNeighbors(current.i, current.j);
+        showHideCells(current.i, current.j);
     }
     
     if (!readyToStart) {
@@ -57,9 +57,10 @@ function draw() {
     mazeGeneratorAlgorithm();
 }
 
-function showNeighbors(i, j) {
-    var neighbors = [];
+function showHideCells(i, j) {
+    var cellsToShow = [];
     
+    let thisCell    = grid[index(i, j)];
     let top         = grid[index(i, j-1)];
     let topLeft     = grid[index(i-1,j-1)];
     let topRight    = grid[index(i+1,j-1)];
@@ -69,19 +70,20 @@ function showNeighbors(i, j) {
     let bottomRight = grid[index(i+1,j+1)];
     let left        = grid[index(i-1, j)];
     
-    neighbors.push(top);
-    neighbors.push(topLeft);
-    neighbors.push(topRight);
-    neighbors.push(right);
-    neighbors.push(bottom);
-    neighbors.push(bottomLeft);
-    neighbors.push(bottomRight);
-    neighbors.push(left);
+    cellsToShow.push(thisCell);
+    cellsToShow.push(top);
+    cellsToShow.push(topLeft);
+    cellsToShow.push(topRight);
+    cellsToShow.push(right);
+    cellsToShow.push(bottom);
+    cellsToShow.push(bottomLeft);
+    cellsToShow.push(bottomRight);
+    cellsToShow.push(left);
     
     grid.forEach(cell => {
-        neighbors.forEach(neighbor => {
-            if(neighbor){
-                if(neighbor === cell){
+        cellsToShow.forEach(cellToShow => {
+            if(cellToShow){
+                if(cellToShow === cell){
                     cell.visible = true;
                 } else {
                     cell.visible = false;
@@ -89,9 +91,9 @@ function showNeighbors(i, j) {
             }
         }); 
     });
-    neighbors.forEach(neighbor => {
-        if(neighbor){
-            neighbor.visible = true;
+    cellsToShow.forEach(cell => {
+        if(cell){
+            cell.visible = true;
         }
     });
     
@@ -190,22 +192,32 @@ function index(i, j) {
 function keyPressed() {
     if(gameStarted){
         let next;
+        let test;
         let i = current.i;
         let j = current.j;
         if(keyCode === LEFT_ARROW){
-            next = grid[index(i-1, j)];
+            test = grid[index(i-1, j)];
+            if(test && test.walls[1])
+                next = test;
         }    
         if(keyCode === RIGHT_ARROW){
-            next = grid[index(i+1, j)];
+            test = grid[index(i+1, j)];
+            if(test && test.walls[3])
+                next = test;
         }    
         if(keyCode === UP_ARROW){
-            next = grid[index(i, j-1)];
+            test = grid[index(i, j-1)];
+            if(test && test.walls[2])
+                next = test;
         }    
         if(keyCode === DOWN_ARROW){
-            next = grid[index(i, j+1)];
+            test = grid[index(i, j+1)];
+            if(test && test.walls[0])
+                next = test;
         }
         
-        current = next;
+        if(next)
+            current = next;
     }
 }
 

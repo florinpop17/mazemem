@@ -49,8 +49,8 @@ class Cell{
     }
     
     highlight() {
+        fill(150, 0, 255);
         noStroke();
-        fill(200, 0, 100);
-        rect(this.x, this.y, this.w, this.w);
+        rect(this.x + 3, this.y + 3, this.w - 6, this.w - 6);
     }
 }
