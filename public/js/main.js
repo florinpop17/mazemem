@@ -6,6 +6,8 @@ let grid = [];
 let current;
 let next;
 
+let stack = [];
+
 function setup() {
     createCanvas(canvasSize, canvasSize);
     
@@ -28,6 +30,7 @@ function draw() {
     });
     
     current.visited = true;
+    current.highlight();
     
     // STEP 1
     next = checkNeighbors(current.i, current.j);
@@ -35,11 +38,18 @@ function draw() {
     if(next) {
         next.visited = true;
         
+        // STEP 2
+        stack.push(current);
+        
         // STEP 3
         removeWalls(current, next);
         
         // STEP 4
         current = next;
+    } else if(stack.length > 0) {
+        var cell = stack.pop();
+        
+        current = cell;
     }
 }
 
