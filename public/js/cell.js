@@ -12,13 +12,13 @@ class Cell{
         // Not used anymore
 //        this.visited = false;
         this.visible = false;
-        this.finalTile = false;
+        this.finalCell = false;
     }
     
     draw() {
         if(this.visible){
             
-            if(finalTile){
+            if(this.finalCell){
                 fill(255, 0, 255);
             } else {
                 fill(0);
