@@ -1,9 +1,9 @@
 let player;
-
+let playerStep;
 
 let canvasSize = 800;
-let gridNr = 20;
-let gridSize = canvasSize / gridNr;
+let gridNr = 15;
+let gridSize = playerStep = canvasSize / gridNr;
 let grids = [];
 
 
@@ -21,6 +21,26 @@ function draw() {
     
     player.draw();
 }
+
+
+
+function keyPressed() {
+    if(keyCode === LEFT_ARROW)
+        player.x -= playerStep;
+    
+    if(keyCode === RIGHT_ARROW)
+        player.x += playerStep;
+    
+    if(keyCode === UP_ARROW)
+        player.y -= playerStep;
+    
+    if(keyCode === DOWN_ARROW)
+        player.y += playerStep;
+}
+
+
+
+
 
 function drawLines() {
     strokeWeight(1);
