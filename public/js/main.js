@@ -8,12 +8,13 @@ let next;
 
 let stack = [];
 
-let startGame = false;
+let gameStarted = false;
 let startBtn = document.getElementById('start');
 
 startBtn.addEventListener('click', function(){
-    startGame = true;
+    gameStarted = true;
     loop();
+    this.style.visibility = 'hidden';
 });
 
 function setup() {
@@ -37,7 +38,29 @@ function draw() {
 //        cell.draw();
 //    });
     
+    if(gameStarted){
+        showNeighbors(current.i, current.j);
+    }
+    
+    
     mazeGeneratorAlgorithm();
+}
+
+function showNeighbors(i, j) {
+    
+    let top    = grid[index(i, j-1)];
+    let right  = grid[index(i+1, j)];
+    let bottom = grid[index(i, j+1)];
+    let left   = grid[index(i-1, j)];
+    
+    if(top)
+        top.visible = true;
+    if(right)
+        right.visible = true;
+    if(bottom)
+        bottom.visible = true;
+    if(left)
+        left.visible = true;
 }
 
 function mazeGeneratorAlgorithm() {
@@ -131,17 +154,19 @@ function index(i, j) {
 }
 
 function keyPressed() {
-    if(keyCode === LEFT_ARROW){
-        
-    }    
-    if(keyCode === RIGHT_ARROW){
-        
-    }    
-    if(keyCode === UP_ARROW){
-        
-    }    
-    if(keyCode === DOWN_ARROW){
-        
+    if(gameStarted){
+        if(keyCode === LEFT_ARROW){
+            console.log(current)
+        }    
+        if(keyCode === RIGHT_ARROW){
+
+        }    
+        if(keyCode === UP_ARROW){
+
+        }    
+        if(keyCode === DOWN_ARROW){
+
+        }
     }
 }
 

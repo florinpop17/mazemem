@@ -32,6 +32,9 @@ class Cell{
             if(this.walls[3]){
                 line(this.x, this.y, this.x, this.y + this.w);
             }
+            
+            fill(0);
+            rect(this.x, this.y, this.w, this.w);
 
             // Not used anymore
             
