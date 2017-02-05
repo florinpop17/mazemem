@@ -12,7 +12,7 @@ function setup() {
     
     
     
-    player = new Player(0, 0, gridSize);
+    player = new Player(1, 1, gridSize - 1); // the 1 means the offset of the lines
 }
 
 function draw() {
@@ -21,8 +21,6 @@ function draw() {
     
     player.draw();
 }
-
-
 
 function keyPressed() {
     if(keyCode === LEFT_ARROW)
@@ -37,10 +35,6 @@ function keyPressed() {
     if(keyCode === DOWN_ARROW)
         player.y += playerStep;
 }
-
-
-
-
 
 function drawLines() {
     strokeWeight(1);
