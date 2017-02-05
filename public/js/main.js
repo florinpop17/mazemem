@@ -11,6 +11,13 @@ function setup() {
     createCanvas(canvasSize, canvasSize);
     
     
+    // Creating the grid containing the maze
+    for(var i=0; i<gridNr; i++){
+        grids[i] = [];
+        for(var j=0; j<gridNr; j++){
+            grids[i][j] = 0;   
+        }
+    }
     
     player = new Player(1, 1, gridSize - 1); // the 1 means the offset of the lines
 }
