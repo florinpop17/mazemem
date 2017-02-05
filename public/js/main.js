@@ -9,6 +9,7 @@ let next;
 let stack = [];
 
 let gameStarted = false;
+let readyToStart = false;
 let startBtn = document.getElementById('start');
 
 startBtn.addEventListener('click', function(){
@@ -40,6 +41,17 @@ function draw() {
     
     if(gameStarted){
         showNeighbors(current.i, current.j);
+    }
+    
+    if (!readyToStart) {
+        fill(255);
+        textSize(50);
+        textAlign(CENTER);
+        text('Generating maze...', width/2, height/2);
+    } else {
+        fill(255);
+        text('Ready to start!', width/2, height/2);
+        noLoop();
     }
     
     
@@ -86,8 +98,8 @@ function mazeGeneratorAlgorithm() {
         current = cell;
     } else {
         
-        // Finished the maze
-        noLoop();
+        // Ready to play -> finished generating the maze
+        readyToStart = true;
         
         // Show start Button
         startBtn.style.visibility = 'visible';
