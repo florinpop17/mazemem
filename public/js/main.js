@@ -19,6 +19,15 @@ function setup() {
             grids[i][j] = new Grid(i * gridSize, j * gridSize, gridSize, 0);
         }
     }
+    
+    // Generate blocks at random places
+    randomizeBlocks();
+    
+    // Draw player in 1st spot
+    grids[0][0].val = player;
+    
+    // Draw final block in random spot
+    grids[3][3].val = finish;
 }
 
 function draw() {
@@ -32,17 +41,18 @@ function draw() {
 }
 
 function keyPressed() {
-    if(keyCode === LEFT_ARROW)
-        player.x -= playerStep;
-    
-    if(keyCode === RIGHT_ARROW)
-        player.x += playerStep;
-    
-    if(keyCode === UP_ARROW)
-        player.y -= playerStep;
-    
-    if(keyCode === DOWN_ARROW)
-        player.y += playerStep;
+    if(keyCode === LEFT_ARROW){
+        
+    }    
+    if(keyCode === RIGHT_ARROW){
+        
+    }    
+    if(keyCode === UP_ARROW){
+        
+    }    
+    if(keyCode === DOWN_ARROW){
+        
+    }
 }
 
 function randomizeBlocks() {
