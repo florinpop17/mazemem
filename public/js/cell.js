@@ -1,31 +1,27 @@
-let top = 0;
-let right = 1;
-let bottom = 2;
-let left = 3;
-
 class Cell{
     constructor(x, y, gridSize){
         this.x = x;
         this.y = y;
         this.w = gridSize;
+        //           top, right, bottom, left 
         this.walls = [true, true, true, true];
     }
     
     draw() {
         stroke(255);
-        if(this.walls[top]){
+        if(this.walls[0]){
             line(this.x, this.y, this.x + this.w, this.y);
         }
         
-        if(this.walls[right]){
+        if(this.walls[1]){
             line(this.x + this.w, this.y, this.x + this.w, this.y + this.w);
         }
         
-        if(this.walls[bottom]){
+        if(this.walls[2]){
             line(this.x, this.y + this.w, this.x + this.w, this.y + this.w);
         }
         
-        if(this.walls[left]){
+        if(this.walls[3]){
             line(this.x, this.y, this.x, this.y + this.w);
         }
     }
