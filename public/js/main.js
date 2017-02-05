@@ -5,7 +5,7 @@ let finish = 3;
 let canvasSize = 800;
 let gridNr = 15;
 let gridSize = canvasSize / gridNr;
-let grids = [];
+let grid = [];
 
 let blocksNr = 100;
 
@@ -14,9 +14,8 @@ function setup() {
     
     // Creating the grid containing the maze
     for(let i=0; i<gridNr; i++){
-        grids[i] = [];
         for(let j=0; j<gridNr; j++){
-            grids[i][j] = new Grid(i * gridSize, j * gridSize, gridSize, 0);
+            grid.push(new Cell(i, j));
         }
     }
     
