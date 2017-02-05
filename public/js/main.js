@@ -12,6 +12,7 @@ let stack = [];
 let gameStarted = false;
 let readyToStart = false;
 let startBtn = document.getElementById('start');
+let hidePopup = document.getElementById('hidePopup');
 
 let gameOver = false;
 
@@ -24,6 +25,15 @@ startBtn.addEventListener('click', function(){
     startTime = performance.now();
     loop();
 });
+
+hidePopup.addEventListener('click', function() {
+    document.getElementById('popup').style.display = "none";
+    loop();
+});
+
+function preload() {
+    noLoop();
+}
 
 function setup() {
     createCanvas(canvasSize, canvasSize);
