@@ -1,5 +1,5 @@
 let canvasSize = 800;
-let gridNr = 15;
+let gridNr = 10;
 let gridSize = canvasSize / gridNr;
 let grid = [];
 
@@ -7,6 +7,8 @@ let current;
 let next;
 
 let stack = [];
+
+let start;
 
 function setup() {
     createCanvas(canvasSize, canvasSize);
@@ -17,6 +19,10 @@ function setup() {
             grid.push(new Cell(i, j, gridSize));
         }
     }
+    
+    // Testing performance
+    start = performance.now();
+    
     
     // Starting at grid[0]
     current = grid[0];
@@ -50,6 +56,12 @@ function draw() {
         var cell = stack.pop();
         
         current = cell;
+    } else {
+        console.log('stack empty');
+        noLoop();
+        finished = performance.now();
+        
+        console.log((finished - start) / 1000, 'seconds');
     }
 }
 
@@ -77,7 +89,6 @@ function checkNeighbors(i, j){
     // If there are neighbors return a random one
     if(neighbors.length > 0){
         let r = floor(random(0, neighbors.length));
-        console.log(neighbors.length);
         return neighbors[r];
     }
     
