@@ -178,18 +178,23 @@ function index(i, j) {
 
 function keyPressed() {
     if(gameStarted){
+        let next;
+        let i = current.i;
+        let j = current.j;
         if(keyCode === LEFT_ARROW){
-            console.log(current)
+            next = grid[index(i-1, j)];
         }    
         if(keyCode === RIGHT_ARROW){
-
+            next = grid[index(i+1, j)];
         }    
         if(keyCode === UP_ARROW){
-
+            next = grid[index(i, j-1)];
         }    
         if(keyCode === DOWN_ARROW){
-
+            next = grid[index(i, j+1)];
         }
+        
+        current = next;
     }
 }
 
