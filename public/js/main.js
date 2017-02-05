@@ -58,7 +58,8 @@ function draw() {
         let totalTime = (endTime - startTime) / 1000;
         
         fill(255);
-        text(`Congratulations! You finished in ${totalTime} seconds`, width/2, height/2);
+        textSize(35);
+        text(`Congratulations! You finished in ${totalTime.toFixed(2)} seconds`, width/2, height/2);
         noLoop();
     }
     
@@ -240,6 +241,10 @@ function keyPressed() {
         
         if(next)
             current = next;
+        
+        if(current === finish){
+            gameOver = true;
+        }
     }
 }
 
