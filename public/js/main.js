@@ -1,5 +1,5 @@
 let canvasSize = 800;
-let gridNr = 10;
+let gridNr = 12;
 let gridSize = canvasSize / gridNr;
 let grid = [];
 
