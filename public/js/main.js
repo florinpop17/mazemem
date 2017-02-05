@@ -7,8 +7,6 @@ let gridNr = 15;
 let gridSize = canvasSize / gridNr;
 let grid = [];
 
-let blocksNr = 100;
-
 function setup() {
     createCanvas(canvasSize, canvasSize);
     
@@ -51,14 +49,5 @@ function keyPressed() {
     }    
     if(keyCode === DOWN_ARROW){
         
-    }
-}
-
-function randomizeBlocks() {
-    for(let i=0; i<blocksNr; i++){
-        let x = Math.floor(random(0, gridNr));
-        let y = Math.floor(random(0, gridNr));
-        
-        grids[x][y].val = block;
     }
 }
