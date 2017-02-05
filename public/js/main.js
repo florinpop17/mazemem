@@ -1,4 +1,4 @@
-let canvasSize = 800;
+let canvasSize = 700;
 let gridNr = 12;
 let gridSize = canvasSize / gridNr;
 let grid = [];
@@ -12,6 +12,7 @@ let stack = [];
 let gameStarted = false;
 let readyToStart = false;
 let startBtn = document.getElementById('start');
+let restartBtn = document.getElementById('restart');
 let hidePopup = document.getElementById('hidePopup');
 
 let gameOver = false;
@@ -21,9 +22,15 @@ let endTime;
 
 startBtn.addEventListener('click', function(){
     this.style.visibility = 'hidden';
+    this.style.display = 'none';
+    restartBtn.style.display = 'block';
     gameStarted = true;
     startTime = performance.now();
     loop();
+});
+
+restartBtn.addEventListener('click', function(){
+    restartGame();
 });
 
 hidePopup.addEventListener('click', function() {
@@ -68,7 +75,7 @@ function draw() {
         let totalTime = (endTime - startTime) / 1000;
         
         fill(255);
-        textSize(35);
+        textSize(30);
         text(`Congratulations! You finished in ${totalTime.toFixed(2)} seconds`, width/2, height/2);
         noLoop();
     }
@@ -254,7 +261,26 @@ function keyPressed() {
         
         if(current === finish){
             gameOver = true;
+            restartBtn.style.visibility = 'visible';
         }
     }
 }
 
+function restartGame() {
+    // Clean up the grid
+    grid = [];
+    
+    // Creating the grid containing the maze
+    for(let j=0; j<gridNr; j++){
+        for(let i=0; i<gridNr; i++){
+            grid.push(new Cell(i, j, gridSize));
+        }
+    }
+        
+    // Starting at grid[0]
+    current = grid[0];
+    finish = grid[floor(random(0, grid.length))];
+    finish.finalCell = true;
+    
+    loop();
+}

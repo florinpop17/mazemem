@@ -8,28 +8,38 @@ html, body {
     font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
     height: 100%;
     color: #aaa;
+    overflow: hidden;
 }
 
 body, .popup-container {
     display:flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
 }
 
-#start {
+.popup-container {
+    justify-content: center;
+}
+
+#start, #restart {
     border: none;
     border-bottom: 5px solid #bbb;
     border-radius: 0;
     font-size: 20px;
-    padding: 20px;
+    padding: 12px 20px;
     margin-bottom: 10px;
+    margin-top: 10px;
     visibility: hidden;
 }
 
-#start:active {
-    margin-top: 5px;
+#start:active, #restart:active {
+    margin-top: 15px;
     border-bottom: none;
+}
+
+#restart {
+    display: none;
 }
 
 
