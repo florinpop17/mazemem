@@ -19,7 +19,7 @@ class Cell{
         if(this.visible){
             
             if(this.finalCell){
-                fill('#F4D00C');
+                fill('#0b0e21');
             } else {
                 fill('#004C70');
             }
