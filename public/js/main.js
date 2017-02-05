@@ -78,11 +78,22 @@ function showNeighbors(i, j) {
     neighbors.push(bottomRight);
     neighbors.push(left);
     
+    grid.forEach(cell => {
+        neighbors.forEach(neighbor => {
+            if(neighbor){
+                if(neighbor === cell){
+                    cell.visible = true;
+                } else {
+                    cell.visible = false;
+                }
+            }
+        }); 
+    });
     neighbors.forEach(neighbor => {
         if(neighbor){
             neighbor.visible = true;
         }
-    })
+    });
     
 }
 

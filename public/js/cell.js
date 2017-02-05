@@ -16,6 +16,11 @@ class Cell{
     
     draw() {
         if(this.visible){
+            
+            fill(0);
+            noStroke();
+            rect(this.x, this.y, this.w, this.w);
+            
             stroke(255);
             if(this.walls[0]){
                 line(this.x, this.y, this.x + this.w, this.y);
@@ -32,10 +37,6 @@ class Cell{
             if(this.walls[3]){
                 line(this.x, this.y, this.x, this.y + this.w);
             }
-            
-            fill(0);
-            noStroke();
-            rect(this.x, this.y, this.w, this.w);
 
             // Not used anymore
             
@@ -49,7 +50,7 @@ class Cell{
     
     highlight() {
         noStroke();
-        fill(0, 0, 255, 100);
+        fill(200, 0, 100);
         rect(this.x, this.y, this.w, this.w);
     }
 }
