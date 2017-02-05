@@ -1,8 +1,13 @@
 let player;
+
+let canvasSize = 800;
+let gridSize = canvasSize / 20;
+
+
 function setup() {
-    createCanvas(800, 800);
+    createCanvas(canvasSize, canvasSize);
     
-    player = new Player(0, 0, 40);
+    player = new Player(0, 0, gridSize);
 }
 
 function draw() {
