@@ -13,9 +13,9 @@ let readyToStart = false;
 let startBtn = document.getElementById('start');
 
 startBtn.addEventListener('click', function(){
+    this.style.visibility = 'hidden';
     gameStarted = true;
     loop();
-    this.style.visibility = 'hidden';
 });
 
 function setup() {
@@ -48,12 +48,11 @@ function draw() {
         textSize(50);
         textAlign(CENTER);
         text('Generating maze...', width/2, height/2);
-    } else {
+    } else if (!gameStarted) {
         fill(255);
         text('Ready to start!', width/2, height/2);
         noLoop();
     }
-    
     
     mazeGeneratorAlgorithm();
 }
@@ -73,6 +72,8 @@ function showNeighbors(i, j) {
         bottom.visible = true;
     if(left)
         left.visible = true;
+    
+    
 }
 
 function mazeGeneratorAlgorithm() {
@@ -96,7 +97,7 @@ function mazeGeneratorAlgorithm() {
         var cell = stack.pop();
         
         current = cell;
-    } else {
+    } else if(!readyToStart) {
         
         // Ready to play -> finished generating the maze
         readyToStart = true;
