@@ -12,6 +12,7 @@ class Cell{
         // Not used anymore
 //        this.visited = false;
         this.visible = false;
+        this.finalTile = false;
     }
     
     draw() {

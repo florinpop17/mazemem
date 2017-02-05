@@ -13,9 +13,15 @@ let gameStarted = false;
 let readyToStart = false;
 let startBtn = document.getElementById('start');
 
+let gameOver = false;
+
+let startTime;
+let endTime;
+
 startBtn.addEventListener('click', function(){
     this.style.visibility = 'hidden';
     gameStarted = true;
+    startTime = performance.now();
     loop();
 });
 
@@ -32,6 +38,7 @@ function setup() {
     // Starting at grid[0]
     current = grid[0];
     finish = grid(floor(random(0, grid.length)));
+    finish.finalCell = true;
 }
 
 function draw() {
@@ -43,6 +50,16 @@ function draw() {
     
     if(gameStarted){
         showHideCells(current.i, current.j);
+    }
+    
+    if(gameOver) {
+        endTime = performance.now();
+        
+        let totalTime = (endTime - startTime) / 1000;
+        
+        fill(255);
+        text(`Congratulations! You finished in ${totalTime} seconds`, width/2, height/2);
+        noLoop();
     }
     
     if (!readyToStart) {
