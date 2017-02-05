@@ -34,6 +34,7 @@ class Cell{
             }
             
             fill(0);
+            noStroke();
             rect(this.x, this.y, this.w, this.w);
 
             // Not used anymore

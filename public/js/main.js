@@ -35,9 +35,9 @@ function setup() {
 function draw() {
     background(51);
     
-//    grid.forEach(cell => {
-//        cell.draw();
-//    });
+    grid.forEach(cell => {
+        cell.draw();
+    });
     
     if(gameStarted){
         showNeighbors(current.i, current.j);
@@ -58,21 +58,31 @@ function draw() {
 }
 
 function showNeighbors(i, j) {
+    var neighbors = [];
     
-    let top    = grid[index(i, j-1)];
-    let right  = grid[index(i+1, j)];
-    let bottom = grid[index(i, j+1)];
-    let left   = grid[index(i-1, j)];
+    let top         = grid[index(i, j-1)];
+    let topLeft     = grid[index(i-1,j-1)];
+    let topRight    = grid[index(i+1,j-1)];
+    let right       = grid[index(i+1, j)];
+    let bottom      = grid[index(i, j+1)];
+    let bottomLeft  = grid[index(i-1,j+1)];
+    let bottomRight = grid[index(i+1,j+1)];
+    let left        = grid[index(i-1, j)];
     
-    if(top)
-        top.visible = true;
-    if(right)
-        right.visible = true;
-    if(bottom)
-        bottom.visible = true;
-    if(left)
-        left.visible = true;
+    neighbors.push(top);
+    neighbors.push(topLeft);
+    neighbors.push(topRight);
+    neighbors.push(right);
+    neighbors.push(bottom);
+    neighbors.push(bottomLeft);
+    neighbors.push(bottomRight);
+    neighbors.push(left);
     
+    neighbors.forEach(neighbor => {
+        if(neighbor){
+            neighbor.visible = true;
+        }
+    })
     
 }
 
