@@ -6,6 +6,8 @@ class Player{
     }
     
     draw() {
+        fill(200, 0, 100);
+        strokeWeight(0);
         rect(this.x, this.y, this.size, this.size);
     }
 }
