@@ -1,4 +1,4 @@
-# mazemem
+# MazeMem
 p5js maze game
 
 # Link
