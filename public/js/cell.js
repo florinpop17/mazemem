@@ -1,8 +1,10 @@
 class Cell{
-    constructor(x, y, gridSize){
+    constructor(i, j, gridSize){
+        this.i = i;
+        this.j = j;
         this.w = gridSize;
-        this.x = x * this.w;
-        this.y = y * this.w;
+        this.x = i * this.w;
+        this.y = j * this.w;
         //           top, right, bottom, left 
         this.walls = [true, true, true, true];
         

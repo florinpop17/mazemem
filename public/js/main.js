@@ -10,8 +10,8 @@ function setup() {
     createCanvas(canvasSize, canvasSize);
     
     // Creating the grid containing the maze
-    for(let i=0; i<gridNr; i++){
-        for(let j=0; j<gridNr; j++){
+    for(let j=0; j<gridNr; j++){
+        for(let i=0; i<gridNr; i++){
             grid.push(new Cell(i, j, gridSize));
         }
     }
@@ -28,13 +28,52 @@ function draw() {
     });
     
     current.visited = true;
-    next = checkNeighbors(current.x, current.y);
-    
+    next = checkNeighbors(current.i, current.j);
+        
     if(next) {
         next.visited = true;
         current = next;
-        console.log('test')
     }
+}
+
+function checkNeighbors(i, j){
+    var neighbors = [];
+    
+    let top    = grid[index(i, j-1)];
+    let right  = grid[index(i+1, j)];
+    let bottom = grid[index(i, j+1)];
+    let left   = grid[index(i-1, j)];
+        
+    
+    if(top && !top.visited)
+        neighbors.push(top);
+    
+    if(right && !right.visited)
+        neighbors.push(right);
+    
+    if(bottom && !bottom.visited)
+        neighbors.push(bottom);
+    
+    if(left && !left.visited)
+        neighbors.push(left);
+            
+    // If there are neighbors return a random one
+    if(neighbors.length > 0){
+        let r = floor(random(0, neighbors.length));
+        console.log(neighbors.length);
+        return neighbors[r];
+    }
+    
+    // Else return undefined
+    return undefined;
+}
+
+function index(i, j) {
+    // Check edges
+    if(i < 0 || j < 0 || i > gridNr - 1 || j > gridNr - 1)
+        return -1;
+    
+    return i + j * gridNr;
 }
 
 function keyPressed() {
@@ -50,43 +89,5 @@ function keyPressed() {
     if(keyCode === DOWN_ARROW){
         
     }
-}
-
-function checkNeighbors(i, j){
-    var neighbors = [];
-    
-    var top    = grid[index(i, j-1)];
-    var right  = grid[index(i+1, j)];
-    var bottom = grid[index(i, j+1)];
-    var left   = grid[index(i-1, j)];
-        
-    if(top && !top.visited)
-        neighbors.push(top);
-    
-    if(right && !right.visited)
-        neighbors.push(right);
-    
-    if(bottom && !bottom.visited)
-        neighbors.push(bottom);
-    
-    if(left && !left.visited)
-        neighbors.push(left);
-        
-    // If there are neighbors return a random one
-    if(neighbors.length > 0){
-        var r = floor(random(0, neighbors.length))
-        return neighbors[r];
-    }
-    
-    // Else return undefined
-    return undefined;
-}
-
-function index(i, j) {
-    // Check edges
-    if(i < 0 || j < 0 || i > gridNr - 1 || j > gridNr - 1)
-        return -1;
-    
-    return i + j * gridNr;
 }
 
