@@ -4,6 +4,7 @@
 }
 
 html, body {
+    background-color: #111;
     height: 100%;
 }
 
@@ -11,4 +12,14 @@ body {
     display:flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+}
+
+#start {
+    border: none;
+    border-radius: 0;
+    font-size: 20px;
+    padding: 20px;
+    margin-bottom: 10px;
+    visibility: hidden;
 }

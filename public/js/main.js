@@ -8,8 +8,6 @@ let next;
 
 let stack = [];
 
-let start;
-
 function setup() {
     createCanvas(canvasSize, canvasSize);
     
@@ -19,11 +17,7 @@ function setup() {
             grid.push(new Cell(i, j, gridSize));
         }
     }
-    
-    // Testing performance
-    start = performance.now();
-    
-    
+        
     // Starting at grid[0]
     current = grid[0];
 }
@@ -60,11 +54,9 @@ function mazeGeneratorAlgorithm() {
         
         current = cell;
     } else {
-        noLoop();
-        finished = performance.now();
         
-        console.log((finished - start) / 1000, 'seconds');
-        console.log(grid);
+        // Finished the maze
+        noLoop();
     }
 }
 
