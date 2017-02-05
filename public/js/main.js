@@ -64,6 +64,10 @@ function checkNeighbors(i, j){
 }
 
 function index(i, j) {
+    // Check edge cases
+    if(i < 0 || j < 0 || i < gridNr - 1 || j < gridNr < 1)
+        return -1;
+    
     return i + j * gridNr;
 }
 
