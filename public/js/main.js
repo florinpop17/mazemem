@@ -8,6 +8,14 @@ let next;
 
 let stack = [];
 
+let startGame = false;
+let startBtn = document.getElementById('start');
+
+startBtn.addEventListener('click', function(){
+    startGame = true;
+    loop();
+});
+
 function setup() {
     createCanvas(canvasSize, canvasSize);
     
@@ -57,6 +65,9 @@ function mazeGeneratorAlgorithm() {
         
         // Finished the maze
         noLoop();
+        
+        // Show start Button
+        startBtn.style.visibility = 'visible';
     }
 }
 

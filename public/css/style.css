@@ -17,9 +17,15 @@ body {
 
 #start {
     border: none;
+    border-bottom: 5px solid #bbb;
     border-radius: 0;
     font-size: 20px;
     padding: 20px;
     margin-bottom: 10px;
     visibility: hidden;
+}
+
+#start:active {
+    margin-top: 5px;
+    border-bottom: none;
 }
