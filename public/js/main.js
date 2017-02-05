@@ -1,9 +1,10 @@
-let player;
-let playerStep;
+let player = 1;
+let block = 2;
+let finish = 3;
 
 let canvasSize = 800;
-let gridNr = 20;
-let gridSize = playerStep = canvasSize / gridNr;
+let gridNr = 10;
+let gridSize = canvasSize / gridNr;
 let grids = [];
 
 function setup() {
@@ -16,21 +17,16 @@ function setup() {
             grids[i][j] = new Grid(i * gridSize, j * gridSize, gridSize, 0);
         }
     }
-    
-    player = new Player(1, 1, gridSize - 1); // the 1 means the offset of the lines
 }
 
 function draw() {
     background(51);
-    //drawLines();
     
     grids.forEach(gridX => {
         gridX.forEach(grid => {
             grid.draw(); 
         });
-    })
-    
-    //player.draw();
+    });
 }
 
 function keyPressed() {
@@ -45,19 +41,4 @@ function keyPressed() {
     
     if(keyCode === DOWN_ARROW)
         player.y += playerStep;
-}
-
-function drawLines() {
-    strokeWeight(1);
-    stroke(255);
-    
-    // Vertical lines
-    for(var i = 0; i < gridNr; i++){
-        line(i * gridSize, 0, i * gridSize, height);
-    }
-    
-    // Horizontal lines
-    for(var i = 0; i < gridNr; i++){
-        line(0, i * gridSize, width, i * gridSize);
-    }
 }
