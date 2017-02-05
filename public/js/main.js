@@ -13,7 +13,7 @@ function setup() {
     // Creating the grid containing the maze
     for(let i=0; i<gridNr; i++){
         for(let j=0; j<gridNr; j++){
-            grid.push(new Cell(i, j, gridSize));
+            grid.push(new Cell(i * gridSize, j * gridSize, gridSize));
         }
     }
 }
