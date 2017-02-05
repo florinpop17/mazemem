@@ -3,17 +3,19 @@ let block = 2;
 let finish = 3;
 
 let canvasSize = 800;
-let gridNr = 10;
+let gridNr = 15;
 let gridSize = canvasSize / gridNr;
 let grids = [];
+
+let blocksNr = 100;
 
 function setup() {
     createCanvas(canvasSize, canvasSize);
     
     // Creating the grid containing the maze
-    for(var i=0; i<gridNr; i++){
+    for(let i=0; i<gridNr; i++){
         grids[i] = [];
-        for(var j=0; j<gridNr; j++){
+        for(let j=0; j<gridNr; j++){
             grids[i][j] = new Grid(i * gridSize, j * gridSize, gridSize, 0);
         }
     }
@@ -41,4 +43,13 @@ function keyPressed() {
     
     if(keyCode === DOWN_ARROW)
         player.y += playerStep;
+}
+
+function randomizeBlocks() {
+    for(let i=0; i<blocksNr; i++){
+        let x = Math.floor(random(0, gridNr));
+        let y = Math.floor(random(0, gridNr));
+        
+        grids[x][y].val = block;
+    }
 }
