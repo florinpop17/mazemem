@@ -30,6 +30,9 @@ startBtn.addEventListener('click', function(){
 });
 
 restartBtn.addEventListener('click', function(){
+    this.style.display = 'none';
+    this.style.visibility = 'hidden';
+    startBtn.style.display = 'block';
     restartGame();
 });
 
@@ -61,9 +64,13 @@ function setup() {
 function draw() {
     background(51);
     
+    
+    // Drawing the grid
     grid.forEach(cell => {
         cell.draw();
     });
+    
+    mazeGeneratorAlgorithm();
     
     if(gameStarted){
         showHideCells(current.i, current.j);
@@ -90,8 +97,6 @@ function draw() {
         text('Ready to start!', width/2, height/2);
         noLoop();
     }
-    
-    mazeGeneratorAlgorithm();
 }
 
 function showHideCells(i, j) {
@@ -281,6 +286,11 @@ function restartGame() {
     current = grid[0];
     finish = grid[floor(random(0, grid.length))];
     finish.finalCell = true;
+    
+    gameStarted = false;
+    readyToStart = false;
+    gameOver = false;
+    startTime = performance.now();
     
     loop();
 }
