@@ -30,8 +30,15 @@ class Cell{
         }
         
         if(this.visited){
+            noStroke();
             fill(200, 0, 100, 100);
             rect(this.x, this.y, this.w, this.w);
         }
+    }
+    
+    highlight() {
+        noStroke();
+        fill(0, 0, 255, 100);
+        rect(this.x, this.y, this.w, this.w);
     }
 }
