@@ -5,6 +5,8 @@ class Cell{
         this.w = gridSize;
         //           top, right, bottom, left 
         this.walls = [true, true, true, true];
+        
+        this.visited = false;
     }
     
     draw() {
@@ -23,6 +25,11 @@ class Cell{
         
         if(this.walls[3]){
             line(this.x, this.y, this.x, this.y + this.w);
+        }
+        
+        if(this.visited){
+            fill(200, 0, 100, 100);
+            rect(this.x, this.y, this.w, this.w);
         }
     }
 }
