@@ -10,12 +10,10 @@ let grids = [];
 function setup() {
     createCanvas(canvasSize, canvasSize);
     
-    
     // Creating the grid containing the maze
     for(var i=0; i<gridNr; i++){
-        grids[i] = [];
         for(var j=0; j<gridNr; j++){
-            grids[i][j] = 0;   
+            grids[i][j] = new Grid(i * gridSize, j * gridSize, 0);
         }
     }
     
