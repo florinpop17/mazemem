@@ -33,6 +33,7 @@ function draw() {
     if(next) {
         next.visited = true;
         current = next;
+        console.log('test')
     }
 }
 
@@ -58,7 +59,7 @@ function checkNeighbors(i, j){
     var right  = grid[index(i+1, j)];
     var bottom = grid[index(i, j+1)];
     var left   = grid[index(i-1, j)];
-    
+        
     if(top && !top.visited)
         neighbors.push(top);
     
@@ -83,7 +84,7 @@ function checkNeighbors(i, j){
 
 function index(i, j) {
     // Check edges
-    if(i < 0 || j < 0 || i < gridNr - 1 || j < gridNr < 1)
+    if(i < 0 || j < 0 || i > gridNr - 1 || j > gridNr - 1)
         return -1;
     
     return i + j * gridNr;
