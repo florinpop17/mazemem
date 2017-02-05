@@ -3,7 +3,8 @@ let gridNr = 15;
 let gridSize = canvasSize / gridNr;
 let grid = [];
 
-var current;
+let current;
+let next;
 
 function setup() {
     createCanvas(canvasSize, canvasSize);
@@ -11,7 +12,7 @@ function setup() {
     // Creating the grid containing the maze
     for(let i=0; i<gridNr; i++){
         for(let j=0; j<gridNr; j++){
-            grid.push(new Cell(i * gridSize, j * gridSize, gridSize));
+            grid.push(new Cell(i, j, gridSize));
         }
     }
     
@@ -27,7 +28,12 @@ function draw() {
     });
     
     current.visited = true;
-    checkNeighbors(current.x, current.y);
+    next = checkNeighbors(current.x, current.y);
+    
+    if(next) {
+        next.visited = true;
+        current = next;
+    }
 }
 
 function keyPressed() {
@@ -64,7 +70,7 @@ function checkNeighbors(i, j){
     
     if(left && !left.visited)
         neighbors.push(left);
-    
+        
     // If there are neighbors return a random one
     if(neighbors.length > 0){
         var r = floor(random(0, neighbors.length))
